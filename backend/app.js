@@ -4,11 +4,13 @@ const mongoose = require("mongoose");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var seed = require("./seed");
+require("dotenv").config();
 
 var indexRouter = require("./routes/index");
 var booksRouter = require("./routes/books");
 
-mongoose.connect("mongodb://mongouser:mongopassword@localhost:32017", {
+mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -17,6 +19,14 @@ const db = mongoose.connection;
 
 db.on("error", (error) => console.error(error));
 db.on("open", () => console.log("connected to db"));
+
+seed
+  .then(() => {
+    console.log("seeded db");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 var app = express();
 

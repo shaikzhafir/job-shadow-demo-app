@@ -1,15 +1,4 @@
-const mongoose = require("mongoose");
 const Book = require("./models/book");
-
-mongoose.connect("mongodb://mongouser:mongopassword@localhost:32017", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-const db = mongoose.connection;
-
-db.on("error", (error) => console.error(error));
-db.on("open", () => console.log("connected to db"));
 
 const seedBooks = [
   {
@@ -49,11 +38,4 @@ const seedDB = async () => {
   await Book.insertMany(seedBooks);
 };
 
-seedDB()
-  .then(() => {
-    console.log("seeded db");
-    mongoose.connection.close();
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+module.exports = seedDB();
