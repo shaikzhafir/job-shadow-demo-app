@@ -1,0 +1,19 @@
+---
+apiVersion: "v1"
+kind: "PersistentVolume"
+metadata:
+  name: "mongo-pv-development"
+  labels:
+    type: local
+    app: "mongo-development"
+spec:
+  storageClassName: "local-storage"
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  claimRef:
+    name: "mongodb-pvc-development"
+  hostPath:
+    path: "/tmp"
