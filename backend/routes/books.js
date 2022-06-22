@@ -12,6 +12,21 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.get("/:id", async (req, res, next) => {
+  try {
+    res.book = await Book.findById(req.params.id);
+    if (!res.book) {
+      return res.status(404).json({ message: "cannot find book" });
+    }
+    res.status(200).json(res.book);
+  } catch (error) {
+    return res.status(500).json({
+      message: "Getting a book with ID failed!",
+      error: err,
+    });
+  }
+});
+
 router.post("/", async (req, res, next) => {
   const book = new Book({
     title: req.body.title,
