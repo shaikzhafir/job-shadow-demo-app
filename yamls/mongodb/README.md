@@ -1,3 +1,4 @@
+How to deploy mongoDB pod
 cd into mongodb/storage and kubectl apply -f .
 cd back to mongodb and kubectl apply -f .
 

@@ -34,6 +34,7 @@ const seedBooks = [
 ];
 
 const seedDB = async () => {
+  console.log("i am called");
   await Book.deleteMany({});
   await Book.insertMany(seedBooks);
 };

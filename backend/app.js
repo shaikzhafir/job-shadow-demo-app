@@ -20,6 +20,8 @@ const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 db.on("open", () => console.log("connected to db"));
 
+
+// 
 seed
   .then(() => {
     console.log("seeded db");
