@@ -33,10 +33,9 @@ const seedBooks = [
   },
 ];
 
-const seedDB = async () => {
-  console.log("i am called");
+const seedDB = async function () {
   await Book.deleteMany({});
   await Book.insertMany(seedBooks);
-};
+} 
 
 module.exports = seedDB();

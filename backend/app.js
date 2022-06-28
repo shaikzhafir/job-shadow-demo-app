@@ -6,6 +6,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var seed = require("./seed");
 require("dotenv").config();
+const Book = require("./models/book");
 
 var indexRouter = require("./routes/index");
 var booksRouter = require("./routes/books");
@@ -17,18 +18,29 @@ mongoose.connect(process.env.MONGODB_URL, {
 
 const db = mongoose.connection;
 
+
 db.on("error", (error) => console.error(error));
 db.on("open", () => console.log("connected to db"));
 
 
-// 
-seed
-  .then(() => {
-    console.log("seeded db");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// check if theres existing entries in mongodb
+
+
+
+Book.find().then((result) => {
+  if (result.length == 0){
+    seed.then(() => {
+      console.log("seeded db");
+    })
+    .catch((err) => {
+      console.log(err);
+    });  
+  }
+  else {
+    console.log('using existing data');
+  }
+}).catch(err => console.log(err))
+
 
 var app = express();
 
