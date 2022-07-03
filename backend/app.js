@@ -1,4 +1,5 @@
 var createError = require("http-errors");
+var cors = require("cors");
 var express = require("express");
 const mongoose = require("mongoose");
 var path = require("path");
@@ -18,29 +19,25 @@ mongoose.connect(process.env.MONGODB_URL, {
 
 const db = mongoose.connection;
 
-
 db.on("error", (error) => console.error(error));
 db.on("open", () => console.log("connected to db"));
 
-
 // check if theres existing entries in mongodb
-
-
-
-Book.find().then((result) => {
-  if (result.length == 0){
-    seed.then(() => {
-      console.log("seeded db");
-    })
-    .catch((err) => {
-      console.log(err);
-    });  
-  }
-  else {
-    console.log('using existing data');
-  }
-}).catch(err => console.log(err))
-
+Book.find()
+  .then((result) => {
+    if (result.length == 0) {
+      seed
+        .then(() => {
+          console.log("seeded db");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("using existing data");
+    }
+  })
+  .catch((err) => console.log(err));
 
 var app = express();
 
@@ -54,6 +51,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(cors());
 app.use("/", indexRouter);
 app.use("/books", booksRouter);
 

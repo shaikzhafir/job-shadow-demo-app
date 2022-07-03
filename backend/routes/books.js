@@ -33,6 +33,7 @@ router.post("/", async (req, res, next) => {
     author: req.body.author,
     isbn: req.body.isbn,
     genre: req.body.genre,
+    imageUrl: req.body.imageUrl,
   });
   try {
     const result = await book.save();

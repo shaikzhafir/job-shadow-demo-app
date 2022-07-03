@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "af5156f8-92f0-4ad1-90d0-dc3bccfa3da1",
+		"_postman_id": "46e2df13-d5fa-412c-80c4-24d7b6438169",
 		"name": "job-shadow",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\" : \"new book\",\r\n    \"author\" : \"john doe\",\r\n    \"isbn\" : \"12121212\",\r\n    \"genre\" : \"fiction\"\r\n}",
+					"raw": "{\r\n    \"title\" : \"new book\",\r\n    \"author\" : \"john doe\",\r\n    \"isbn\" : \"12121212\",\r\n    \"genre\" : \"fiction\",\r\n    \"imageurl\" : \"https://easydrawingart.com/wp-content/uploads/2019/06/How-to-draw-a-book.jpg\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -20,12 +20,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/books",
+					"raw": "http://localhost:4000/books",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "4000",
 					"path": [
 						"books"
 					]
@@ -39,12 +39,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/books",
+					"raw": "http://localhost:4000/books",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "4000",
 					"path": [
 						"books"
 					]
@@ -58,12 +58,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/books/62b3e8248b3a780dc13ae98f",
+					"raw": "http://localhost:4000/books/62b3e8248b3a780dc13ae98f",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "4000",
 					"path": [
 						"books",
 						"62b3e8248b3a780dc13ae98f"
