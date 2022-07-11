@@ -6,71 +6,148 @@
 	},
 	"item": [
 		{
-			"name": "POST books",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"title\" : \"new book\",\r\n    \"author\" : \"john doe\",\r\n    \"isbn\" : \"12121212\",\r\n    \"genre\" : \"fiction\",\r\n    \"imageurl\" : \"https://easydrawingart.com/wp-content/uploads/2019/06/How-to-draw-a-book.jpg\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "reviews",
+			"item": [
+				{
+					"name": "GET reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/reviews",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"reviews"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:4000/books",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"books"
-					]
+				{
+					"name": "GET Review By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/reviews/62cbcc16307cf16e8c9d91c3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"reviews",
+								"62cbcc16307cf16e8c9d91c3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add review",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookID\" : \"62cbc21228eea76c11f491d5\",\r\n    \"reviewText\" : \"another review\",\r\n    \"date\" : \"2022-07-11T06:24:18.403Z\",\r\n    \"rating\" : 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/reviews",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"reviews"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "GET books",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:4000/books",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"books"
-					]
+			"name": "books",
+			"item": [
+				{
+					"name": "POST books",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"new book\",\r\n    \"author\" : \"john doe\",\r\n    \"isbn\" : \"12121212\",\r\n    \"genre\" : \"fiction\",\r\n    \"imageurl\" : \"https://easydrawingart.com/wp-content/uploads/2019/06/How-to-draw-a-book.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/books/62b3e8248b3a780dc13ae98f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"books",
+								"62b3e8248b3a780dc13ae98f"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET By ID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:4000/books/62b3e8248b3a780dc13ae98f",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"books",
-						"62b3e8248b3a780dc13ae98f"
-					]
-				}
-			},
-			"response": []
+			]
 		}
 	]
 }
