@@ -20,6 +20,8 @@ spec:
           ports:
             - containerPort: 27017
           env:
+            - name: MONGO_INITDB_DATABASE
+              value: "bookReviewApp"
             - name: MONGO_INITDB_ROOT_USERNAME
               valueFrom:
                 secretKeyRef:

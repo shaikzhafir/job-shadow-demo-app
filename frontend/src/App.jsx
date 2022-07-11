@@ -17,12 +17,12 @@ import Typography from '@mui/material/Typography';
 
 
 function App() {
-  const { data, loading, error } = useFetch("http://localhost:4000/books")
+  const [data, loading, error] = useFetch("http://localhost:4000/books")
 
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Books App</h1>
-      <div className="container">
+      <div className="grid-container">
         {loading && <div>loading...</div>}
         {error && <div>Error fetching books</div>}
         {data && data.map(book => (
@@ -30,8 +30,7 @@ function App() {
             <CardMedia
               component="img"
               image={book.imageUrl}
-              width="300"
-              height="300"
+              height="700"
               alt="image of book"
               objectfit="cover"
             />

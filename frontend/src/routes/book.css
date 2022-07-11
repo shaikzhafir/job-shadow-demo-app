@@ -1,0 +1,11 @@
+.grid-container-row{
+    grid-auto-rows: 100px;
+    row-gap: 1em;
+    
+}
+
+.container {
+    width: 70%;
+    margin: auto;
+    margin-bottom: 5em;
+}

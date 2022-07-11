@@ -5,12 +5,14 @@ const mongoose = require("mongoose");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-var seed = require("./seed");
+var seed = require("./seed/seedBooks");
+var seedReviews = require("./seed/seedReviews");
 require("dotenv").config();
 const Book = require("./models/book");
 
 var indexRouter = require("./routes/index");
 var booksRouter = require("./routes/books");
+var reviewsRouter = require("./routes/reviews");
 
 mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
@@ -39,6 +41,14 @@ Book.find()
   })
   .catch((err) => console.log(err));
 
+seedReviews()
+  .then(() => {
+    console.log("seeded reviews");
+  })
+  .catch((err) => {
+    console.error("error");
+  });
+
 var app = express();
 
 // view engine setup
@@ -54,6 +64,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 app.use("/", indexRouter);
 app.use("/books", booksRouter);
+app.use("/reviews", reviewsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
