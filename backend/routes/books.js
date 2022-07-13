@@ -52,4 +52,27 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+router.delete("/:id", async (req, res, next) => {
+  
+  try {
+    console.log(req.params.id);
+    res.book = await Book.findById(req.params.id);
+    
+    if (!res.book) {
+      return res.status(404).json({ message: "cannot find book" });
+    }
+    // add delete method here 
+    console.log("im inside the delete function!");
+    return res.status(200).json({
+      message : "TODO delete logic"
+    })
+
+  } catch (error) {
+    return res.status(500).json({
+      message: "Delete book failed!",
+      error: err,
+    });
+  }
+});
+
 module.exports = router;
