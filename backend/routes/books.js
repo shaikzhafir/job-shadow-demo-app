@@ -63,6 +63,7 @@ router.delete("/:id", async (req, res, next) => {
     }
     // add delete method here 
     console.log("im inside the delete function!");
+
     return res.status(200).json({
       message : "TODO delete logic"
     })
