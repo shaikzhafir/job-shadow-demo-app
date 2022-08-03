@@ -54,8 +54,9 @@ export default function Book() {
 
                 </>
             }
+            <h2 style={{ display: "flex", justifyContent: "center", width: "50%", margin: "auto" }}>Reviews</h2>
             <div className="container">
-                <h2>Reviews</h2>
+                
                 {reviewLoading && <div>Review loading...</div>}
                 {reviewError && <div>Error fetching reviews</div>}
                 <div className="grid-container-row">

@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import App from "./App";
 import Book from "./routes/book"
+import AddBook from "./routes/addBook/addBook";
+
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -14,6 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="book/:bookId" element={<Book />} />
+      <Route path="book/addBook" element={<AddBook />} />
       <Route
         path="*"
         element={

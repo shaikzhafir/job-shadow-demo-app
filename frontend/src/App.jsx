@@ -4,7 +4,7 @@ import "./App.css";
 import useFetch from "./customHooks/useFetch";
 
 //react Router component here 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 // UI components from material-ui
@@ -19,9 +19,15 @@ import Typography from '@mui/material/Typography';
 function App() {
   const [data, loading, error] = useFetch("http://localhost:4000/books")
 
+  let navigate = useNavigate()
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>Books App</h1>
+      <div className="topBar">
+        <div></div>
+        <h1>Books App</h1>
+        
+        <Button onClick={() => {navigate("/book/addBook")}}>Add Book</Button>
+      </div>
       <div className="grid-container">
         {loading && <div>loading...</div>}
         {error && <div>Error fetching books</div>}
