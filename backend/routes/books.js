@@ -62,10 +62,10 @@ router.delete("/:id", async (req, res, next) => {
       return res.status(404).json({ message: "cannot find book" });
     }
     // add delete method here 
-    console.log("im inside the delete function!");
+    await Book.deleteOne({ _id : req.params.id})
 
     return res.status(200).json({
-      message : "TODO delete logic"
+      message : "Successfully deleted book"
     })
 
   } catch (error) {
