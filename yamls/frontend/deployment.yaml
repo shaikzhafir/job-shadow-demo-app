@@ -1,39 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp-deployment
+  name: frontend-deployment
   labels:
-    app: webapp
+    app: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: webapp
+      app: frontend
   template:
     metadata:
       labels:
-        app: webapp
+        app: frontend
     spec:
       containers:
-        - name: webapp
-          image: testapp:v1
+        - name: frontend
+          image: vite-frontend:v2
           imagePullPolicy: Never
           ports:
             - containerPort: 3000
-          env:
-            - name: MONGODB_URL
-              value: "mongodb://mongouser:mongopassword@mongo-service:27017"
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: webapp-service
+  name: frontend-service
 spec:
   type: NodePort
   selector:
-    app: webapp
+    app: frontend
   ports:
     - protocol: TCP
-      port: 4000
-      targetPort: 4000
-      nodePort: 30100
+      port: 3000
+      targetPort: 3000
+      nodePort: 30000

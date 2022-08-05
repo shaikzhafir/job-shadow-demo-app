@@ -21,8 +21,8 @@ export default function Book() {
 
     let navigate = useNavigate();
     let params = useParams();
-    const [bookData, bookLoading, bookError] = useFetch(`http://localhost:4000/books/${params.bookId}`)
-    const [reviewData, reviewLoading, reviewError] = useFetch(`http://localhost:4000/reviews/${params.bookId}`)
+    const [bookData, bookLoading, bookError] = useFetch(`http://localhost:30100/books/${params.bookId}`)
+    const [reviewData, reviewLoading, reviewError] = useFetch(`http://localhost:30100/reviews/${params.bookId}`)
 
     return (
         <>
